@@ -32,14 +32,14 @@ const server = require('http').Server(app);
  */
 
 module.exports = {
-  app,
-  // connection
+    app,
+    // connection
 };
 
 // Bootstrap models
 fs.readdirSync(models)
-  .filter(file => ~file.indexOf('.js'))
-  .forEach(file => require(join(models, file)));
+    .filter(file => ~file.indexOf('.js'))
+    .forEach(file => require(join(models, file)));
 
 // Bootstrap routes
 require('./config/express')(app);
@@ -52,15 +52,15 @@ require('./config/routes')(app);
 //   .once('open', listen);
 
 var options = { server: { socketOptions: { keepAlive: 1 } } };
-mongoose.connect(config.db, options).then(
-  listen,
-  console.log
+mongoose.connect("mongodb://asif-user:1q2w3e4r5t@ds111299.mlab.com:11299/asif-db", options).then(
+    listen,
+    console.log
 );
 
-function listen () {
-  if (app.get('env') === 'test') return;
-  server.listen(port);  
-  console.log('Express app started on port ' + port);
+function listen() {
+    if (app.get('env') === 'test') return;
+    server.listen(port);
+    console.log('Express app started on port ' + port);
 }
 
 // function connect () {
@@ -68,4 +68,3 @@ function listen () {
 //   var connection = mongoose.connect(config.db, options).connection;
 //   return connection;
 // }
-
