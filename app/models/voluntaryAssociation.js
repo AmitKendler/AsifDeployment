@@ -4,17 +4,17 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const SALT_WORK_FACTOR = 10;
 
 // Creating model, defining fields
 const VoluntaryAssociationSchema = new Schema({
-	code: {type: String, default: ""},
-	password: {type: String, default:""},
-	name: {type: String, default: "", required:true},
-	phone: {type: String, default:''},
-	address: {type: String, default: ''}
-}, {collection: "voluntaryAssociations"})
+    code: { type: String, default: "" },
+    password: { type: String, default: "" },
+    name: { type: String, default: "", required: true },
+    phone: { type: String, default: '' },
+    address: { type: String, default: '' }
+}, { collection: "voluntaryAssociations" })
 
 // Presave function for password checking
 VoluntaryAssociationSchema.pre('save', function(next) {
@@ -43,7 +43,7 @@ VoluntaryAssociationSchema.methods.comparePassword = function(candidatePassword,
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
-	});
+    });
 }
 
 mongoose.model("VoluntaryAssociation", VoluntaryAssociationSchema);
