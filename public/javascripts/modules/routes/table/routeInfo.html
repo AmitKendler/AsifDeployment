@@ -1,0 +1,22 @@
+<map-view-donations ng-if="donations && route" donations="donations" route="route"></map-view-donations>
+
+<div class="card-block donations-table" ng-if="donations">
+        
+    <ul id="route-info-tabs" class="nav nav-tabs" role="tablist">
+        <li class="nav-item" ng-repeat="path in route.paths track by $index">
+            <a class="nav-link" ng-class="{'active': $index == currentTabIndex}" ng-click="onChangePath($index)" data-toggle="tab" role="tab">
+                מסלול {{$index + 1}}. נהג: {{getVolunteerName(path.driver)}}. עוזר נהג: {{getVolunteerName(path.helper)}}
+            </a>            
+        </li>    
+    </ul>
+        
+    <donations-table id="routeDonationsTable" donations="donations" hide-checkboxes="true"></donations-table>
+
+</div>
+
+<div class="screen-content align-center">
+    <button id="btnStartRoute" ng-disabled="startedRoute" type="button" ng-click="startRoute()" class="btn btn-md btn-route-start">
+        <i>צא לדרך</i>
+    </button>
+</div>
+

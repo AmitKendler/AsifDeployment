@@ -1,0 +1,41 @@
+<div class="modal fade darkBackground" id="planConstantRouteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-md align-center" role="document">
+            <div class="modal-content" style="width: 300px">
+                <div class="modal-header">
+                    <h5>הוסף למסלול איסוף קבוע</h5>
+                </div>
+    
+                <form id="planConstantRouteForm" ng-submit="planRoute(date, constantPath)" name="planConstantRouteForm"> 
+                     <div class="modal-body">                          
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="date">תאריך</label>
+                                <span class="fa fa-info-circle" data-toggle="tooltip" data-placement="left" title="תכנון המסלול יתבצע על התרומות אשר ניתנות לאסיפה בתאריך זה בלבד"></span>
+                                <input id="datepicker2" width="270" ng-model="date" required/>
+                                <script>
+                                    $('#datepicker2').datepicker({
+                                        uiLibrary: 'bootstrap4',
+                                        format: 'dd/mm/yyyy'
+                                    });
+                                </script>
+                            </div>
+                        </div>   
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label for="constantPath">נתיב קבוע</label>
+                                <select class="form-control" ng-options="path as path.name for path in constantPaths"  ng-model="constantPath"></select>
+                                <!-- <input ng-focus="geolocate()" type="text" name="startPoint" class="form-control" id="startPoint" ng-model="placeToStart" placeholder="נקודת התחלה" required>                             -->
+                            </div>
+                        </div>    
+                    </div>                     
+    
+                    <div class="modal-bottom">               
+                        <button type="button" class="btn btn-close" data-dismiss="modal">סגור</button>
+                        <button type="submit" class="btn btn-primary" >
+                            תכנן מסלול
+                        </button>
+                    </div>
+               </form>   
+            </div>
+        </div>
+    </div>

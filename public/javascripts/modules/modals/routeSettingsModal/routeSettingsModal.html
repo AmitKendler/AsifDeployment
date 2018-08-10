@@ -1,0 +1,47 @@
+<div class="modal fade darkBackground" id="routeSettingsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md align-center" role="document">
+        <div class="modal-content" style="width: 80%">
+            <div class="modal-header">
+                <h5>הגדרות מסלול</h5>
+            </div>
+
+            <form id="routeSettingsForm" ng-submit="saveSettings()" name="routeSettingsForm"> 
+                <div class="modal-body">
+                    <div>בחירת נהגים</div>
+                    <div class="line-seperator"></div>
+                    <div class="row">
+                        <div class="col-md-2 form-group">
+                            <label for="driver">מסלול</label>
+                        </div>
+                        <div class="col-md-5 form-group">
+                            <label for="driver">נהג</label>                            
+                        </div>
+                        <div class="col-md-5 form-group">
+                            <label for="driver">עוזר נהג</label>                            
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="path in routeCopy.paths track by $index">
+                        <div class="col-md-2 form-group">
+                            <label for="driver">{{$index+1}}: </label>
+                        </div>
+                        <div class="col-md-5 form-group">
+                            <select name="select-{{$index}}-driver" class="form-control" ng-options="volunteer._id as volunteerLabel(volunteer) for volunteer in volunteers"  ng-model="path.driver"></select>
+                        </div>
+                        <div class="col-md-5 form-group">
+                            <select name="select-{{$index}}-helper" class="form-control" ng-options="volunteer._id as volunteerLabel(volunteer) for volunteer in volunteers"  ng-model="path.helper"></select>
+                        </div>
+                    </div>      
+                </div>
+
+                <div class="modal-bottom">               
+                    <button type="button" class="btn btn-close" data-dismiss="modal">סגור</button>
+                    <button type="submit" class="btn btn-primary">
+                        שמור
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    
+    

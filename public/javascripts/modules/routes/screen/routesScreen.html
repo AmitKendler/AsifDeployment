@@ -1,0 +1,35 @@
+<div ng-show="routes.length > 0">
+    <div class="card">
+            <div id="sidenavOpen" class="sidenav open show">
+                <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
+                <div ng-repeat="currRoute in routes track by $index">
+                    <a href ng-class="{'active':currRoute == route}" ng-click="setRoute($index)">
+                        {{toDateFormat(currRoute)}}
+                    </a>
+                </div>
+            </div>
+            
+            <div id="sidenavClose" class="sidenav closed">
+                <button ng-click="openNav()"><i class="fa fa-bars"></i></button>    
+            </div>
+
+            <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+            <div class="screen-content">            
+                <route-info ng-if="route" route="route"></route-info>            
+            </div>        
+    </div>
+    <div class="screen-content align-right route-info-bottom">
+        <button ng-if="route.status == 'READY'" type="button" class="btn btn-sm btn-danger" ng-click="deleteRoute()">
+            <i class="fa fa-trash no-style"></i>
+        </button>
+        <button type="button" data-toggle="modal" data-target="#routeSettingsModal" class="btn btn-sm">
+            <i class="fa fa-cog no-style"></i>
+        </button>
+    </div>
+</div>
+<div ng-show="routes.length == 0">
+    <div class="noRoutes">
+        טרם נוצרו מסלולים
+    </div>
+</div>
+<route-settings-modal></route-settings-modal>

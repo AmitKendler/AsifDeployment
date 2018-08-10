@@ -1,0 +1,46 @@
+<div class="modal fade darkBackground" id="planRouteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md align-center" role="document">
+        <div class="modal-content" style="width: 300px">
+            <div class="modal-header">
+                <h5>תכנן מסלול איסוף</h5>
+            </div>
+
+            <form id="planRouteForm" ng-submit="planRoute(date)" name="planRouteForm"> 
+                 <div class="modal-body">                          
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="date">תאריך</label>
+                            <span class="fa fa-info-circle" data-toggle="tooltip" data-placement="left" title="תכנון המסלול יתבצע על התרומות אשר ניתנות לאסיפה בתאריך זה בלבד"></span>
+                            <input id="datepicker" width="270" ng-model="date" required/>
+                            <script>
+                                $('#datepicker').datepicker({
+                                    uiLibrary: 'bootstrap4',
+                                    format: 'dd/mm/yyyy'
+                                });
+                            </script>
+                        </div>
+                    </div>   
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="startPoint">נקודת התחלה</label>
+                            <input ng-focus="geolocate()" type="text" name="startPoint" class="form-control" id="startPoint" ng-model="placeToStart" placeholder="נקודת התחלה" required>                            
+                        </div>
+                    </div>    
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="endPoint">נקודת סיום</label>
+                            <input ng-focus="geolocate()" type="text" name="endPoint" class="form-control" id="endPoint" ng-model="placeToEnd" placeholder="נקודת סיום" required>                            
+                        </div>
+                    </div>    
+                </div>                     
+
+                <div class="modal-bottom">               
+                    <button type="button" class="btn btn-close" data-dismiss="modal">סגור</button>
+                    <button type="submit" class="btn btn-primary" >
+                        תכנן מסלול
+                    </button>
+                </div>
+           </form>   
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="animated fadeIn">
+<div class="card" ng-if="donations">
+    <map-view-donations donations="donations"></map-view-donations>
+    <donations-table id="donationsTable" donations="donations"></donations-table>
+    
+</div>
+<div class="align-center plan-route-buttons">
+    <div>
+    <button type="button" ng-click="openPlanRouteModal()" class="btn btn-primary btn-md">
+        <i class="fa fa-paper-plane"></i>
+        <i>תכנן מסלול איסוף חדש</i>
+    </button>
+</div>
+<div>
+    <button type="button" ng-click="openPlanConstantRouteModal()" class="btn btn-primary btn-md">
+        <i class="fa fa-plus"></i>
+        <i>הוסף למסלול איסוף קבוע</i>
+    </button>
+</div>
+</div>
+
+<plan-route-modal donations="donations"></plan-route-modal>
+<plan-constant-route-modal donations="donations"></plan-constant-route-modal>
+<route-is-ready-modal></route-is-ready-modal>
+</div>

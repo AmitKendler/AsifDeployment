@@ -1,0 +1,19 @@
+<div class="modal fade darkBackground" id="sendMessageModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md align-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>צור הודעה חדשה</h5>
+            </div>
+
+            <div class="modal-body">
+                ​<textarea id="msgContent" rows="5" cols="55" ng-model="message"></textarea>  
+            </div>
+
+            <div class="modal-bottom">               
+                <button type="button" ng-click="sendMessage(message)" class="btn btn-primary" data-dismiss="modal">
+                    שלח
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

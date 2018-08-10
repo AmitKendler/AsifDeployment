@@ -1,0 +1,26 @@
+<div class="card-block vehicles-table">
+  <table class="table table-striped" >
+      <thead>
+        <tr>
+          <th>מספר רכב</th>
+          <th>סוג רכב</th>
+          <!-- <th>קיבולת תא מטען (ליטרים)</th> -->
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="vehicle in vehicles track by $index">
+          <td>{{ vehicle.number }}</td>
+          <td>{{ vehicle.type }}</td>
+          <!-- <td>{{ vehicle.capacity }}</td> -->
+          <td class="td-button">
+              <button class="btn btn-sm btn-warning" ng-click="onOpenDialog(vehicle)" data-toggle="modal" data-target="#vehicleModal">ערוך</button>
+          </td>
+          <td class="td-button">
+              <button class="btn btn-sm btn-danger" ng-click="deleteVehicle($index)">מחק</button>
+          </td>
+        </tr>        
+      </tbody>
+  </table>
+</div>

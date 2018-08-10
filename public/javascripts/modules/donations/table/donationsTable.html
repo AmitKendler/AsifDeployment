@@ -1,0 +1,119 @@
+<div class="card-block donations-table">
+    <table class="table scroll table-striped">
+        <thead>
+            <tr>
+                <th ng-if="!hideCheckboxes">כלול באלגוריתם</th>
+                <th ng-repeat="column in tableColumns">{{column.label}}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th ng-if="!hideCheckboxes"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="donation in donations">
+                <td ng-if="!hideCheckboxes">
+                    <input type="checkbox" class="big-checkbox" ng-disabled="donation.product.status != 'NEW'" ng-model="donation.includeInAlgorithm">
+                </td>
+                <td class="{{column.className}}" ng-class="{'new': donation.product.status == 'NEW' , 'pending': donation.product.status == 'PENDING',
+          'taken': donation.product.status == 'TAKEN'}" ng-repeat="column in tableColumns" ng-bind="getValue(column, donation)">
+                </td>
+                <td>
+                    <popover-contact-details class="btn btn-sm btn-success " contact="donation.contact">
+                        <span class="fa fa-user"></span>
+                    </popover-contact-details>
+                </td>
+                <td>
+                    <popover-product-image class="btn btn-sm btn-danger " product="donation.product">
+                        <span class="fa fa-image"></span>
+                    </popover-product-image>
+                </td>
+                <td>
+                    <popover-advanced-details class="btn btn-sm btn-info" type="donation.product.prodType" product="donation.product">i
+                    </popover-advanced-details>
+                </td>
+                <td ng-if="!hideCheckboxes">
+                    <div title="שלח הודעה לתורם" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#sendMessageModal" data-user-id="{{donation.userId}}">
+                        <span class="fa fa-envelope"></span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="productImage" ng-hide="true">
+    <div class="popover-data">
+        <img ng-src="{{product.imageUrl}}" width="150" height="120">
+    </div>
+    <div id="contactInfo" ng-hide="true">
+        <div class="popover-data">
+            <div>
+                שם:
+                <span ng-bind="contact.name"></span>
+            </div>
+            <div>
+                טלפון:
+                <span ng-bind="contact.phone"></span>
+            </div>
+        </div>
+    </div>
+    <div id="foodPopover" ng-hide="true">
+        <div class="popover-data">
+            <div>
+                <label class="round-label" ng-bind="product.amount.amount"></label>
+                <span ng-bind="getAmountTypeLabel(product.amount.units)"></span>
+            </div>
+            <div>
+                <i ng-class="getIconClass('packed', true)"></i>
+                <label>ארוז</label>
+            </div>
+            <div>
+                <i ng-class="getIconClass('kosher', true)"></i>
+                <label>כשר</label>
+            </div>
+            <div>
+                <i ng-class="getIconClass('requiresCool', true)"></i>
+                <label>דורש קירור</label>
+            </div>
+            <div>
+                <i ng-class="getIconClass('immediateUse', true)"></i>
+                <label>שימוש מיידי</label>
+            </div>
+        </div>
+    </div>
+    <div id="clothingPopover" ng-hide="true">
+        <div class="popover-data">
+            <div>
+                <label class="round-label" ng-bind="product.amount.amount"></label>
+                <span ng-bind="getAmountTypeLabel(product.amount.units)"></span>
+            </div>
+            <div>
+                <i ng-class="getIconClass('condition', 'חדש')"></i>
+                <label>חדש</label>
+                <i ng-class="getIconClass('condition', 'משומש')"></i>
+                <label>משומש</label>
+                <i ng-class="getIconClass('condition', 'בלוי')"></i>
+                <label>בלוי</label>
+            </div>
+            <div>
+                <label ng-bind="product.size"></label>
+            </div>
+        </div>
+    </div>
+    <div id="furniturePopover" ng-hide="true">
+        <div class="popover-data">
+            <div>
+                <label class="round-label" ng-bind="product.amount.amount"></label>
+                <span ng-bind="getAmountTypeLabel(product.amount.units)"></span>
+            </div>
+            <div>
+                <i ng-class="getIconClass('condition', 'חדש')"></i>
+                <label>חדש</label>
+                <i ng-class="getIconClass('condition', 'משומש')"></i>
+                <label>משומש</label>
+                <i ng-class="getIconClass('condition', 'בלוי')"></i>
+                <label>בלוי</label>
+            </div>
+        </div>
+    </div>
+    <send-message-modal></send-message-modal>

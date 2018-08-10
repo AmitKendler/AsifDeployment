@@ -1,0 +1,22 @@
+<div class="card-block volunteers-table">
+    <table class="table table-striped" >
+        <thead>
+          <tr>
+            <th>שם</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="constantPath in constantPaths track by $index">
+            <td>{{ constantPath.name }} </td>
+            <td class="td-button">
+                <button class="btn btn-sm btn-warning" ng-click="onOpenDialog(constantPath)" data-toggle="modal" data-target="#constantPathModal">ערוך</button>
+            </td>
+            <td class="td-button">
+                <button class="btn btn-sm btn-danger" ng-click="deleteConstantPath($index)">מחק</button>
+            </td>
+          </tr>        
+        </tbody>
+    </table>
+  </div>

@@ -1,0 +1,28 @@
+<div class="card-block volunteers-table">
+  <table class="table table-striped" >
+      <thead>
+        <tr>
+          <!-- <th>תעודת זהות</th> -->
+          <th>שם מלא</th>
+          <th>כתובת</th>
+          <th>טלפון</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="volunteer in volunteers track by $index">
+          <!-- <td>{{ volunteer.identity }}</td> -->
+          <td>{{ volunteer.firstName }} {{ volunteer.lastName }}</td>
+          <td>{{ getAddressLabel(volunteer.address) }}</td>
+          <td>{{ volunteer.phone }}</td>
+          <td class="td-button">
+              <button class="btn btn-sm btn-warning" ng-click="onOpenDialog(volunteer)" data-toggle="modal" data-target="#volunteerModal">ערוך</button>
+          </td>
+          <td class="td-button">
+              <button class="btn btn-sm btn-danger" ng-click="deleteVolunteer($index)">מחק</button>
+          </td>
+        </tr>        
+      </tbody>
+  </table>
+</div>

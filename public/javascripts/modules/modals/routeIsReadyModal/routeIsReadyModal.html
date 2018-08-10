@@ -1,0 +1,26 @@
+<div class="modal fade darkBackground" id="routeIsReadyModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md align-center" role="document">
+        <div class="modal-content" style="width: 80%">
+            <div class="modal-header">
+                <h5>סיום תכנון מסלול</h5>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <span>חישוב המסלול לתאריך {{toDateFormat(route.date)}} הסתיים בהצלחה!</span>                                      
+                    </div>
+                </div>      
+            </div>
+
+            <div class="modal-bottom">               
+                <button type="button" class="btn btn-close" data-dismiss="modal">סגור</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#routeSettingsModal">
+                    עבור להגדרות המסלול
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<route-settings-modal></route-settings-modal>
