@@ -38,26 +38,11 @@ app.config(function($routeProvider, $httpProvider, $locationProvider) {
             controller: 'volunteers',
             resolve: reolveRoute("volunteers")
         })    
-        .when("/statistics", {
-            templateUrl : "javascripts/modules/statistics/statistics.html",
-            controller: 'statistics',
-            resolve: reolveRoute("statistics")
-        })   
         .when("/routes", {
             templateUrl : "javascripts/modules/routes/screen/routesScreen.html",
             controller: 'routes',
             resolve: reolveRoute("routes")
-        })    
-        .when("/findv", {
-            templateUrl : "javascripts/modules/findv/findv.html",
-            controller: 'findv',
-            resolve: reolveRoute("findv")
-        }) 
-        .when("/photolabels", {
-            templateUrl : "javascripts/modules/photolabels/photolabels.html",
-            controller: 'photolabels',
-            resolve: reolveRoute("photolabels")
-        })           
+        })             
         .otherwise({
             redirectTo : "/"
         });
