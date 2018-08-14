@@ -22,7 +22,14 @@ const models = join(__dirname, 'app/models');
 const port = process.env.PORT || 3000;
 const app = express();
 const server = require('http').Server(app);
+const io = require('socket.io')(server);
+const store = require("./app/store");
 
+store.setIo(io);
+
+io.on('connection', function(socket) {
+    console.log('a user connected');
+});
 
 
 // const connection = connect();

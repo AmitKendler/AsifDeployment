@@ -1,16 +1,27 @@
 const _ = require('lodash');
 const loggedInVoluntarieesTokens = [];
 
-exports.registerVolunteerClientToken = function(token) {
+let myIo;
 
-	if (!loggedInVoluntarieesTokens.includes(token)) {
-		loggedInVoluntarieesTokens.push(token);
-		console.log("Added volunteer token " + token);
-	}
+exports.setIo = function(io) {
+    myIo = io;
 }
 
-exports.getRegisteredVolunteerClientsToken = function () {
-	return loggedInVoluntarieesTokens;
+exports.getIo = function() {
+    return myIo;
+}
+
+
+exports.registerVolunteerClientToken = function(token) {
+
+    if (!loggedInVoluntarieesTokens.includes(token)) {
+        loggedInVoluntarieesTokens.push(token);
+        console.log("Added volunteer token " + token);
+    }
+}
+
+exports.getRegisteredVolunteerClientsToken = function() {
+    return loggedInVoluntarieesTokens;
 }
 
 // exports.store = {registerVolunteerClientToken, getRegisteredVolunteerClientsToken};
